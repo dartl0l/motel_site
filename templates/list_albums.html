@@ -1,0 +1,49 @@
+{% extends "admin.html" %}
+
+{% block list_albums %}
+<li class="active">
+  <a class="page-scroll" href="/list_albums">Albums List</a>
+</li>
+{% endblock %}
+
+{% block logout %}
+<li>
+  <a class="page-scroll" href="/logout">Logout</a>
+</li>
+{% endblock %}
+
+{% block page_data %}
+<section class="events" id="albums">
+  <form enctype="multipart/form-data" action='/delete_album' method="post">
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <!-- <th class="hidden"/> -->
+            <th>Имя Альбома</th>
+            <!-- <th>Дата</th> -->
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <!-- {% set sort = request.args.sort|default('date') %} -->
+        {% for album in albums %}
+          <tr>
+            <!-- <td class="hidden">{{album.id}}</td> -->
+            <td>{{album.name}}</td>
+            <td class="text-center">
+              <input type="checkbox" name="to_delete.{{album.id}}" value={{album.id}}>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <button type="submit" class="btn btn-default">Удалить альбом</button>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock %}

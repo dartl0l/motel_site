@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block gallery %}
+<li class="active">
+  <a class="page-scroll" href="/gallery">Gallery</a>
+</li>
+{% endblock %}
+
+{% block page_data %}
+<section class="gallery" id="gallery">
+  <!-- The container for the list of example images -->
+  <div class="links" id="links">
+    {% for file in album %}
+      <a data-gallery="" href={{file}}>
+        <img src={{file}} width="200">
+      </a>
+    {% endfor %}
+  </div>
+  <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+  <div id="blueimp-gallery" class="blueimp-gallery">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+  </div>
+</section>
+{% endblock %}

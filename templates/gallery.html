@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block gallery %}
+<li class="active">
+  <a class="page-scroll" href="/gallery">Gallery</a>
+</li>
+{% endblock %}
+
+{% block page_data %}
+<section class="gallery" id="gallery">
+  <div class="container-fluid">
+    <div class="row no-gutter popup-gallery">
+    {% for album in albums %}
+      <div class="col-lg-4 col-sm-6">
+
+        <a class="events-box" href="/gallery-{{album.folder_uuid}}">
+          <img src="data:;base64,{{album.cover}}" class="img-responsive" alt="">
+<!--           <div class="events-box-caption">
+            <div class="events-box-caption-content">
+              <div class="events-name text-faded">
+                {{album.name}}
+              </div>
+            </div>
+          </div> -->
+        </a>
+        <div>
+          <p>{{album.name}}</p>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

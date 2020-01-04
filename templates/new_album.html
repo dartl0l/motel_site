@@ -1,0 +1,43 @@
+{% extends "admin.html" %}
+
+{% block new_album %}
+<li class="active">
+    <a class="page-scroll" href="/gallery">New Album</a>
+</li>
+{% endblock %}
+
+{% block logout %}
+<li>
+  <a class="page-scroll" href="/logout">Logout</a>
+</li>
+{% endblock %}
+
+{% block page_data %}
+<section class="new-event" id="new-event">
+  <form enctype="multipart/form-data" action='/new_album' method="post">
+    <div class="row">
+      <div class="col-md-12">
+        <label for="album_name" class="control-label">Название альбома</label>
+        <input type="text" class="form-control" id="album_name" name="album_name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="album_cover">Обложка</label>
+        <input type="file" id="album_cover" name="album_cover"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="album_data">Фотографии</label>
+        <input type="file" id="album_data" name="album_data" multiple accept="image"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <button type="submit" class="btn btn-default">Добавить</button>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block page_data %}
+<div class="intro">
+  <div class="intro-body">
+    <div class="container">
+      <input id="stars" name="stars" class="rating rating-loading" value="5" data-min="0" data-max="5" data-step="1" data-show-clear="false" data-show-caption="false">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <h1 class="brand-heading"><img class="intro-image" src="/static/img/logo/logo-mini.png" ></h1>
+          <p class="intro-text">Your room is ready.</p>
+        </div>
+      </div>
+      {% if last_event %}
+      <div class="row">
+        <div id="instagram" class="col-md-8 col-md-offset-2">
+          <!-- <img src="data:;base64,{{ last_event.image }}" class="img-responsive" alt=""> -->
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).on('ready', function(){
+    $('#stars').rating({displayOnly: true, step: 0.5});
+});
+</script>
+<script type="text/javascript">
+    var feed = new Instafeed({
+    get: 'user',
+    userId: 2325702471,
+    accessToken: '2325702471.d12056e.57788d17a290480994a3da0914f82eca',
+    target: 'instagram',
+    resolution: 'standard_resolution',
+    limit: 1,
+    });
+    feed.run();
+</script>
+{% endblock %}

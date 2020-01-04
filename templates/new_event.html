@@ -1,0 +1,49 @@
+{% extends "admin.html" %}
+
+{% block new_event %}
+<li class="active">
+    <a class="page-scroll" href="/events">New Event</a>
+</li>
+{% endblock %}
+
+{% block logout %}
+<li>
+  <a class="page-scroll" href="/logout">Logout</a>
+</li>
+{% endblock %}
+
+{% block page_data %}
+<section class="new-event" id="new-event">
+  <form enctype="multipart/form-data" action='/new_event' method="post">
+    <div class="row">
+      <div class="col-md-10">
+        <label for="event_name" class="control-label">Имя события</label>
+        <input type="text" class="form-control" id="event_name" name="event_name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <label for="event_description" class="control-label">Описание события</label>
+        <input type="text" class="form-control" id="event_description" name="event_description">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <label for="event_date" class="control-label">Дата события</label>
+        <input type="date" class="form-control" id="event_date" name="event_date" value="">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="event_image">Изображение</label>
+        <input type="file" id="event_image" name="event_image">
+      </div>                  
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <button type="submit" class="btn btn-default">Добавить событие</button>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock %}

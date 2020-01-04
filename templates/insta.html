@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block events %}
+<li class="active">
+  <a class="page-scroll" href="/events">Events</a>
+</li>
+{% endblock %}
+
+{% block page_data %}
+<section class="events" id="events">
+    <div class="instagram" id="instagram"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    var feed = new Instafeed({
+    get: 'user',
+    userId: 2325702471,
+    accessToken: '2325702471.d12056e.57788d17a290480994a3da0914f82eca',
+    target: 'instagram',
+    resolution: 'low_resolution',
+    // template: '<a href="{{link}}"><img src="{{image}}" /></a>',
+    // after: function() {
+    //   var el = document.getElementById('instagram');
+    //   if (el.classList)
+    //     el.classList.add('show');
+    //   else
+    //     el.className += ' ' + 'show';
+    // }
+    });
+    feed.run();
+</script>
+{% endblock %}

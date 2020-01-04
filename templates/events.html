@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block events %}
+<li class="active">
+  <a class="page-scroll" href="/events">Events</a>
+</li>
+{% endblock %}
+
+{% block page_data %}
+<section class="events" id="events">
+  <div class="container-fluid">
+    <div class="row no-gutter popup-gallery">
+    {% set sort = request.args.sort|default('date') %}
+    {% for event in events|sort(attribute=sort, reverse=True) %}
+      <div class="col-lg-4 col-sm-6">
+        <a class="events-box">
+          <img src="data:;base64,{{ event.image }}" class="img-responsive" alt="">
+          <div class="events-box-caption">
+            <div class="events-box-caption-content">
+              <div class="events-name text-faded">
+                {{event.name}}
+              </div>
+              <div class="events-description">
+                {{event.description}}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
